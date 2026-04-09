@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>রোদেলা হেলথকেয়ার এআই (Rodela Healthcare AI)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans Bengali', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .tab-active {
+            border-bottom: 4px solid #2563eb;
+            color: #2563eb;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- Chosen Palette: Warm Neutrals (Slate-50) with Professional Blue (Blue-600) and Accent Emerald (Emerald-500) -->
+    <!-- Application Structure Plan: A linear yet explorable dashboard structure. It starts with the grand philosophical vision (Hero), transitions into the core problem and quantitative solution (Air[...] -->
+    <!-- Visualization & Content Choices: 1. Bar Chart (Chart.js): Used to compare Data Latency (Traditional vs Rodela) clearly demonstrating the 'Air Gap' reduction. 2. Doughnut Chart (Chart.js): Vis[...] -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <nav class="sticky top-0 z-50 glass-panel shadow-sm px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold text-blue-700 tracking-tight">RODELA<span class="text-slate-500">.AI</span></div>
+        <div class="hidden md:flex space-x-6 text-sm font-semibold text-slate-600">
+            <button onclick="scrollToSection('vision')" class="hover:text-blue-600 transition">ভিশন</button>
+            <button onclick="scrollToSection('airgap')" class="hover:text-blue-600 transition">এয়ার গ্যাপ</button>
+            <button onclick="scrollToSection('architecture')" class="hover:text-blue-600 transition">ইনফ্রাস্ট্রাকচার</button>
+            <button onclick="scrollToSection('ecosystem')" class="hover:text-blue-600 transition">দ্য ইউনিফাইড স্কাই</button>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <section id="vision" class="py-20 px-6 md:px-12 bg-gradient-to-br from-blue-900 to-slate-900 text-white text-center">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-6xl mb-6">🌐 🏥 ⚕️</div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">গ্লোবাল ভিজুয়ালাইজেশন হেলথ কেয়ার</h1>
+                <p class="text-xl md:text-2xl text-blue-200 mb-8 font-light">"মৃত্যুর আগে মানুষের শেষ মিটিং প্লেস... যেখানে প�[...]</p>
+                <p class="text-lg text-slate-300 mb-10">আরশান সল্যুশনের (Arshan Solution) রোদেলা এআই (Rodela AI) মানুষের স্বাস্�[...]</p>
+                <div class="inline-block bg-white text-blue-900 px-6 py-3 rounded-full font-bold shadow-lg shadow-blue-500/30">
+                    "Every life has same value"
+                </div>
+            </div>
+        </section>
+
+        <section id="airgap" class="py-16 px-6 md:px-12 max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-800 mb-4">ডিজিটাল 'এয়ার গ্যাপ' এবং লেটেন্সি কমানো</h2>
+                <p class="text-slate-600 max-w-3xl mx-auto">পুরনো ব্যবস্থায় রোগীর তথ্য বিভিন্ন স্থানে ছড়িয়ে �[...]</p>
+            </div>
+            
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col md:flex-row items-center gap-8">
+                <div class="w-full md:w-1/3 space-y-6">
+                    <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg">
+                        <h3 class="font-bold text-red-700 text-lg mb-2">সনাতন পদ্ধতি ⏳</h3>
+                        <p class="text-sm text-red-600">খণ্ডিত রেকর্ড, কাগজের ফাইল এবং বিচ্ছিন্ন হার্ডড্রাইভ��[...]</p>
+                    </div>
+                    <div class="p-4 bg-emerald-50 border-l-4 border-emerald-500 rounded-r-lg">
+                        <h3 class="font-bold text-emerald-700 text-lg mb-2">রোদেলা এআই ⚡</h3>
+                        <p class="text-sm text-emerald-600">ASPET গ্রাউন্ডেড এজেন্টিক এআই, যা রিয়েল-টাইম জিপিইউ মেম[...]</p>
+                    </div>
+                    <button onclick="updateLatencyChart()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition shadow-md">
+                        ডেটা রিফ্রেশ করুন 🔄
+                    </button>
+                </div>
+                <div class="w-full md:w-2/3">
+                    <div class="chart-container">
+                        <canvas id="latencyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="architecture" class="py-16 px-6 md:px-12 bg-slate-100 border-y border-slate-200">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-slate-800 mb-4">প্র��ুক্তিগত আর্কিটেকচার</h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto">সকল প্রকার হেলথ কেয়ার প্রোভাইডারকে যুক্ত করার জন্[...]</p>
+                </div>
+
+                <div class="flex flex-wrap justify-center border-b border-slate-300 mb-8">
+                    <button id="tab-mesh" onclick="switchTab('mesh')" class="tab-btn tab-active px-6 py-3 text-lg transition">মেশ টপোলজি (Mesh Topology)</button>
+                    <button id="tab-os" onclick="switchTab('os')" class="tab-btn px-6 py-3 text-lg text-slate-500 hover:text-blue-600 transition">প্যারালাল অপারেটিং �[...]</button>
+                    <button id="tab-clinical" onclick="switchTab('clinical')" class="tab-btn px-6 py-3 text-lg text-slate-500 hover:text-blue-600 transition">ক্লিনিক্যাল লে��[...]</button>
+                </div>
+
+                <div id="content-mesh" class="tab-content bg-white p-8 rounded-xl shadow-sm border border-slate-200 text-center">
+                    <div class="text-5xl mb-4">🕸️</div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4">মেশ টপোলজি কানেক্টিভিটি</h3>
+                    <p class="text-slate-600 text-lg max-w-3xl mx-auto">বিশ্বের সকল হেলথ কেয়ার প্রোভাইডার (হাসপাতাল, ল্[...]</p>
+                </div>
+
+                <div id="content-os" class="tab-content hidden bg-white p-8 rounded-xl shadow-sm border border-slate-200 text-center">
+                    <div class="text-5xl mb-4">💻</div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4">হাইব্রিড সিরিয়াল সিরিয়ালাইজেশন OS</h3>
+                    <p class="text-slate-600 text-lg max-w-3xl mx-auto">প্যারালাল অপারেটিং সিস্টেমের সাথে হাইব্রিড সির[...]</p>
+                </div>
+
+                <div id="content-clinical" class="tab-content hidden bg-white p-8 rounded-xl shadow-sm border border-slate-200 text-center">
+                    <div class="text-5xl mb-4">🧬</div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4">ASPET গ্রাউন্ডেড ডিসিশন সাপোর্ট</h3>
+                    <p class="text-slate-600 text-lg max-w-3xl mx-auto">রোদেলা এআই শুধুমাত্র ডেটা দেখায় না, এটি ASPET ফার্ম[...]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ecosystem" class="py-16 px-6 md:px-12 max-w-6xl mx-auto">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="w-full lg:w-1/2">
+                    <h2 class="text-3xl font-bold text-slate-800 mb-4">দ্য ইউনিফাইড স্কাই (The Unified Sky)</h2>
+                    <p class="text-slate-600 mb-6 text-lg">"No one reaches the horizon alone." গ্লোবাল ক্লাউড ফ্যাব্রিক তৈরি করতে রোদ�[...]</p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 flex items-center gap-3 hover:shadow-md transition">
+                            <span class="text-2xl">☁️</span>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Google Cloud</h4>
+                                <p class="text-xs text-slate-500">ম্যাসিভ গ্লোবাল ইনফ্রাস্ট্রাকচার</p>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 flex items-center gap-3 hover:shadow-md transition">
+                            <span class="text-2xl">🔒</span>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Microsoft</h4>
+                                <p class="text-xs text-slate-500">এন্টারপ্রাইজ এআই সিকিউরিটি</p>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 flex items-center gap-3 hover:shadow-md transition">
+                            <span class="text-2xl">⚡</span>
+                            <div>
+                                <h4 class="font-bold text-slate-800">NVIDIA</h4>
+                                <p class="text-xs text-slate-500">GPU/Blackwell আর্কিটেকচার</p>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 flex items-center gap-3 hover:shadow-md transition">
+                            <span class="text-2xl">⚙️</span>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Intel & IBM</h4>
+                                <p class="text-xs text-slate-500">হার্ডওয়্যার ও রিলায়েবিলিটি</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-full lg:w-1/2 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 text-center">পাস্ট ওয়ার্ল্ড হিস্ট্রি ডেটা ইনজেশন</h3>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="dataChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-slate-500 mt-4">রোদেলা এআই-এর গ্লোবাল হেলথ টুইন তৈরিতে ব্যবহৃত ড�[...]</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center px-6">
+        <p class="mb-2 font-semibold text-slate-200">The Sky Belongs to Everyone.</p>
+        <p class="text-sm">Developed for Arshan Solution | "Nothing is impossible in AI. The finalization is here." - Ojana Palash</p>
+    </footer>
+
+    <script>
+        const scrollBtns = document.querySelectorAll('button[onclick^="scrollToSection"]');
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('tab-active');
+                el.classList.add('text-slate-500');
+            });
+            
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('tab-' + tabId);
+            activeBtn.classList.add('tab-active');
+            activeBtn.classList.remove('text-slate-500');
+        }
+
+        Chart.defaults.font.family = "'Noto Sans Bengali', sans-serif";
+        Chart.defaults.color = '#475569';
+
+        const ctxLatency = document.getElementById('latencyChart').getContext('2d');
+        let latencyChart = new Chart(ctxLatency, {
+            type: 'bar',
+            data: {
+                labels: ['ডেটা সংগ্রহ', 'ক্লিনিক্যাল বিশ্লেষণ', 'অ্যাডমিন প্রসেসিং', 'চূড়ান্ত[...]'],
+                datasets: [
+                    {
+                        label: 'সনাতন পদ্ধতি (ঘণ্টা)',
+                        data: [72, 48, 24, 12],
+                        backgroundColor: 'rgba(239, 68, 68, 0.7)',
+                        borderColor: 'rgb(239, 68, 68)',
+                        borderWidth: 1,
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'রোদেলা এআই (মিলি-সেকেন্ড)',
+                        data: [0.5, 0.2, 0.1, 0.1], 
+                        backgroundColor: 'rgba(16, 185, 129, 0.8)',
+                        borderColor: 'rgb(16, 185, 129)',
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) label += ': ';
+                                if (context.datasetIndex === 0) {
+                                    label += context.raw + ' ঘণ্টা';
+                                } else {
+                                    label += context.raw + ' মি.সে (প্রতীকী)';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'logarithmic',
+                        title: { display: true, text: 'সময় (লগারিদমিক স্কেল)' }
+                    }
+                }
+            }
+        });
+
+        function updateLatencyChart() {
+            latencyChart.data.datasets[1].data = [0.1, 0.05, 0.02, 0.01];
+            latencyChart.update();
+            setTimeout(() => {
+                latencyChart.data.datasets[1].data = [0.5, 0.2, 0.1, 0.1];
+                latencyChart.update();
+            }, 1000);
+        }
+
+        const ctxData = document.getElementById('dataChart').getContext('2d');
+        new Chart(ctxData, {
+            type: 'doughnut',
+            data: {
+                labels: ['পূর্ববর্তী ক্লিনিক্যাল হিস্ট্রি', 'মেডিকেল ইমেজিং', 'জিনোমিক্স ডেট[...]'],
+                datasets: [{
+                    data: [40, 25, 20, 15],
+                    backgroundColor: [
+                        '#3b82f6', 
+                        '#0ea5e9', 
+                        '#6366f1', 
+                        '#8b5cf6'  
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: { position: 'right' }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
